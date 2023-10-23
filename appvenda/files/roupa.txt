@@ -1,0 +1,2 @@
+1;Camisa Lisa de Algodao;true;89;Hering;Preta;G
+2;Camisa de Linho;true;129;La Coste;Branca;M

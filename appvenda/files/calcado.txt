@@ -1,0 +1,2 @@
+1;Sapato de Couro Legitimo;true;89;Mister Cat;Preto;41
+2;Sapato de Courino;true;49;Ferratini;Marron;40

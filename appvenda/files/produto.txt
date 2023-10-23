@@ -1,0 +1,4 @@
+1;Camisa Lisa de Algodao;true;89;Hering;Preta;G;R
+2;Camisa de Linho;true;129;La Coste;Branca;M;R
+3;Sapato de Couro Legitimo;true;89;Mister Cat;Preto;41;C
+4;Sapato de Courino;true;49;Ferratini;Marron;40;C
