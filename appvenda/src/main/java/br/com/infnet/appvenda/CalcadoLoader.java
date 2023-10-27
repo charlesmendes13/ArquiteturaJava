@@ -12,6 +12,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.infnet.appvenda.model.domain.Calcado;
+import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.CalcadoService;
 
 @Order(2)
@@ -31,6 +32,7 @@ public class CalcadoLoader implements ApplicationRunner {
 			    while ((line = read.readLine()) != null) {
 			        String[] campos = line.split(";");
 			        
+			        Vendedor vendedor = new Vendedor();
 			        Calcado calcado = new Calcado();
 			        calcado.setCodigo(Integer.valueOf(campos[0]));
 			        calcado.setDescricao(campos[1]);
@@ -39,6 +41,8 @@ public class CalcadoLoader implements ApplicationRunner {
 			        calcado.setMarca(campos[4]);
 			        calcado.setCor(campos[5]);
 			        calcado.setTamanho(Integer.valueOf(campos[6]));
+			        vendedor.setId(Integer.valueOf(campos[7]));
+			        calcado.setVendedor(vendedor);
 			        
 			        calcadoService.incluir(calcado);
 			    };

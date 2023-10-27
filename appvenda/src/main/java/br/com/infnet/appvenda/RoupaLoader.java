@@ -12,6 +12,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.com.infnet.appvenda.model.domain.Roupa;
+import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.RoupaService;
 
 @Order(3)
@@ -24,13 +25,14 @@ public class RoupaLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
-		try (FileReader file = new FileReader("files/calcado.txt");
+		try (FileReader file = new FileReader("files/roupa.txt");
 			    BufferedReader read = new BufferedReader(file)) {
 			    String line;
 
 			    while ((line = read.readLine()) != null) {
 			        String[] campos = line.split(";");
 			        
+			        Vendedor vendedor = new Vendedor();
 			        Roupa roupa = new Roupa();
 			        roupa.setCodigo(Integer.valueOf(campos[0]));
 			        roupa.setDescricao(campos[1]);
@@ -39,6 +41,8 @@ public class RoupaLoader implements ApplicationRunner {
 			        roupa.setMarca(campos[4]);
 			        roupa.setCor(campos[5]);
 			        roupa.setTamanho(campos[6]);
+			        vendedor.setId(Integer.valueOf(campos[7]));
+			        roupa.setVendedor(vendedor);
 			        
 			        roupaService.incluir(roupa);
 			    }

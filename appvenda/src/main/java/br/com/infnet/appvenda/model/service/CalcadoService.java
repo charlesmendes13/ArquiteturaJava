@@ -4,20 +4,23 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.infnet.appvenda.model.domain.Calcado;
+import br.com.infnet.appvenda.model.repository.CalcadoRepository;
 
 @Service
 public class CalcadoService {
-
-	private Map<Integer, Calcado> mapaCalcado = new HashMap<Integer, Calcado>();
 	
+	@Autowired
+	private CalcadoRepository calcadoRepository;
+		
 	public void incluir(Calcado calcado) {
-		mapaCalcado.put(calcado.getCodigo(), calcado);
+		calcadoRepository.save(calcado);
 	}
 	
 	public Collection<Calcado> obterLista(){	
-		return mapaCalcado.values();
+		return (Collection<Calcado>) calcadoRepository.findAll();
 	}
 }

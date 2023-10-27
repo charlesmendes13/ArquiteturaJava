@@ -1,4 +1,4 @@
-1;Camisa Lisa de Algodao;true;89;Hering;Preta;G;R
-2;Camisa de Linho;true;129;La Coste;Branca;M;R
-3;Sapato de Couro Legitimo;true;89;Mister Cat;Preto;41;C
-4;Sapato de Courino;true;49;Ferratini;Marron;40;C
+147;Tenis de Lona;true;209;Nike;Vermelho;40;1;C
+258;Tenis de Couro;true;149;Addidas;Verde;43;1;C
+369;Calca Jeans;true;189;Reserva;Azul;P;2;R
+157;Calca Sarja;true;179;Aviator;Amarela;GG;2;R

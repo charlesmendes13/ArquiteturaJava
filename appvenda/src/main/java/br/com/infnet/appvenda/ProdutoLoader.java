@@ -14,12 +14,17 @@ import org.springframework.stereotype.Component;
 import br.com.infnet.appvenda.model.domain.Calcado;
 import br.com.infnet.appvenda.model.domain.Produto;
 import br.com.infnet.appvenda.model.domain.Roupa;
+import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.ProdutoService;
+import br.com.infnet.appvenda.model.service.VendedorService;
 
 @Order(4)
 @Component
 public class ProdutoLoader implements ApplicationRunner {
 
+	@Autowired
+	private VendedorService vendedorService;
+	
 	@Autowired
 	private ProdutoService produtoService;
 	
@@ -28,12 +33,13 @@ public class ProdutoLoader implements ApplicationRunner {
 		
 		try (FileReader file = new FileReader("files/produto.txt");
 			    BufferedReader read = new BufferedReader(file)) {
-			    String line;
+			    String line;			    
 
 			    while ((line = read.readLine()) != null) {
-			        String[] campos = line.split(";");
+			        String[] campos = line.split(";");		
+			        Vendedor vendedor = new Vendedor();
 			        
-			        switch (campos[7]) {
+			        switch (campos[8]) {
 			        case "C":
 			        	Calcado calcado = new Calcado();
 				        calcado.setCodigo(Integer.valueOf(campos[0]));
@@ -43,6 +49,8 @@ public class ProdutoLoader implements ApplicationRunner {
 				        calcado.setMarca(campos[4]);
 				        calcado.setCor(campos[5]);
 				        calcado.setTamanho(Integer.valueOf(campos[6]));
+				        vendedor.setId(Integer.valueOf(campos[7]));				        
+				        calcado.setVendedor(vendedor);
 				        
 				        produtoService.incluir(calcado);
 			        	
@@ -57,6 +65,8 @@ public class ProdutoLoader implements ApplicationRunner {
 				        roupa.setMarca(campos[4]);
 				        roupa.setCor(campos[5]);
 				        roupa.setTamanho(campos[6]);
+				        vendedor.setId(Integer.valueOf(campos[7]));				        
+				        roupa.setVendedor(vendedor);
 				        
 				        produtoService.incluir(roupa);
 			        	
@@ -68,6 +78,12 @@ public class ProdutoLoader implements ApplicationRunner {
 			    }
 			    
 			    read.close();
+			    
+			    Collection<Vendedor> vendedores = vendedorService.obterLista();
+			    vendedores.forEach(vendedor -> {
+			    	Collection<Produto> produtosVendedor = produtoService.obterLista(vendedor.getId());
+			    	produtosVendedor.forEach(produtoVendedor -> System.out.println("[Produtos do Vendedor] " + produtoVendedor));
+			    });
 			    
 			    Collection<Produto> produtos = produtoService.obterLista();			    
 			    produtos.forEach(produto -> System.out.println("[Produto] " + produto));
