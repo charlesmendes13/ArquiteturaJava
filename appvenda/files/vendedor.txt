@@ -1,2 +1,2 @@
-Charles Mendes;12345678910;charles.mendes@teste.com
-Elberth Moraes;03216549870;elberth.moraes@teste.com
+Charles Mendes;123.456.789-10;charles.mendes@teste.com;20010020
+Elberth Moraes;032.165.498-70;elberth.moraes@teste.com;22241900

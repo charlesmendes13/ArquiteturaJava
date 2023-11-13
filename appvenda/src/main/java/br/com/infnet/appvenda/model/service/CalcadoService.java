@@ -20,7 +20,15 @@ public class CalcadoService {
 		calcadoRepository.save(calcado);
 	}
 	
+	public void excluir(Integer id) {
+		calcadoRepository.deleteById(id);
+	}
+	
 	public Collection<Calcado> obterLista(){	
 		return (Collection<Calcado>) calcadoRepository.findAll();
+	}
+	
+	public long obterQtde() {
+		return calcadoRepository.count();
 	}
 }

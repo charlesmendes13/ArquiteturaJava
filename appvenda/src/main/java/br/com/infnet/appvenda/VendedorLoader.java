@@ -2,8 +2,9 @@ package br.com.infnet.appvenda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Collection;
+
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -11,6 +12,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.com.infnet.appvenda.model.domain.Endereco;
 import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.VendedorService;
 
@@ -35,7 +37,8 @@ public class VendedorLoader implements ApplicationRunner {
 			        vendedor.setNome(campos[0]);
 			        vendedor.setCpf(campos[1]);
 			        vendedor.setEmail(campos[2]);
-			        
+					vendedor.setEndereco(new Endereco(campos[3]));
+
 			        vendedorService.incluir(vendedor);
 			    }
 			    
@@ -44,8 +47,8 @@ public class VendedorLoader implements ApplicationRunner {
 			    Collection<Vendedor> vendedores = vendedorService.obterLista();			    
 			    vendedores.forEach(vendedor -> System.out.println("[Vendedor] " + vendedor)); 
 				
-			} catch (IOException e) {
-			    e.printStackTrace();
+			} catch (ConstraintViolationException e) {
+				FileLogger.logException("[VENDEDOR] - " + e.getMessage());
 			}
 		
 	}

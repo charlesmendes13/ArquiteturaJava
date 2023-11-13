@@ -9,6 +9,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="TProduto")
@@ -18,17 +21,26 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Size(min = 2, max = 100, message = "A descrição deve ter entre {min} e {max} caracteres.")
 	private String descricao;
+	
+	@PositiveOrZero
 	private int codigo;
+	
+	@Positive
 	private float preco;
+	
 	private boolean estoque;
+	
 	@ManyToOne
 	@JoinColumn(name = "idvendedor")
 	private Vendedor vendedor;	
 
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %d - %.2f - %s", id, descricao, codigo, preco, estoque);
+		return String.format("id (%d) - descricao (%s) - codigo (%d) - preco (%.2f) - estoque (%s) - vendedor [%s]", 
+				id, descricao, codigo, preco, estoque, vendedor);
 	}
 	
 	public Integer getId() {

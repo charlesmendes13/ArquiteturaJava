@@ -18,11 +18,19 @@ public class ProdutoService {
 		produtoRepository.save(produto);
 	}
 	
+	public void excluir(Integer id) {
+		produtoRepository.deleteById(id);
+	}
+	
 	public Collection<Produto> obterLista(){
 		return (Collection<Produto>) produtoRepository.findAll();
 	}
 	
 	public Collection<Produto> obterLista(Integer idVendedor){
 		return (Collection<Produto>) produtoRepository.obterLista(idVendedor);
+	}
+	
+	public long obterQtde() {
+		return produtoRepository.count();
 	}
 }

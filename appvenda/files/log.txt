@@ -1,0 +1,5 @@
+nov. 13, 2023 2:39:56 PM br.com.infnet.appvenda.FileLogger logException
+GRAVE: [VENDEDOR] - Validation failed for classes [br.com.infnet.appvenda.model.domain.Vendedor] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='deve corresponder a "\d{3}\.\d{3}\.\d{3}-\d{2}"', propertyPath=cpf, rootBeanClass=class br.com.infnet.appvenda.model.domain.Vendedor, messageTemplate='{javax.validation.constraints.Pattern.message}'}
+]

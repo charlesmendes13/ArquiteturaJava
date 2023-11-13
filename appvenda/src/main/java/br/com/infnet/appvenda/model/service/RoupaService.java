@@ -18,7 +18,15 @@ public class RoupaService {
 		roupaRepository.save(roupa);		
 	}
 	
+	public void excluir(Integer id) {
+		roupaRepository.deleteById(id);
+	}
+	
 	public Collection<Roupa> obterLista(){	
 		return (Collection<Roupa>) roupaRepository.findAll();		
+	}
+	
+	public long obterQtde() {
+		return roupaRepository.count();
 	}
 }
