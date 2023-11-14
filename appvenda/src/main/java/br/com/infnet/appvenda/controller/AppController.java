@@ -35,32 +35,5 @@ public class AppController {
 		model.addAttribute("qtdeCalcado", calcadoService.obterQtde());
 
 		return "home";
-	}
-	
-	@GetMapping(value = "/produto/lista")
-	public String obterListaProduto(Model model) {
-		
-		model.addAttribute("titulo", "Produtos:");
-		model.addAttribute("listagem", produtoService.obterLista());
-
-		return showHome(model);
-	}
-
-	@GetMapping(value = "/roupa/lista")
-	public String obterListaRoupa(Model model) {
-		
-		model.addAttribute("titulo", "Produtos Roupa:");
-		model.addAttribute("listagem", roupaService.obterLista());
-
-		return showHome(model);
-	}
-
-	@GetMapping(value = "/calcado/lista")
-	public String obterListaCalcado(Model model) {
-		
-		model.addAttribute("titulo", "Produtos Calçado:");
-		model.addAttribute("listagem", calcadoService.obterLista());
-
-		return showHome(model);
-	}
+	}	
 }

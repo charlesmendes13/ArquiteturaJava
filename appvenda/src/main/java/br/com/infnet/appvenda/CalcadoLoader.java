@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -52,8 +54,8 @@ public class CalcadoLoader implements ApplicationRunner {
 			    Collection<Calcado> calcados = calcadoService.obterLista();			    
 			    calcados.forEach(calcado -> System.out.println("[Calcado] " + calcado));
 				
-			} catch (IOException e) {
-			    e.printStackTrace();
+			} catch (ConstraintViolationException e) {
+				FileLogger.logException("[CALCADO] - " + e.getMessage());			
 			}		
 	}
 

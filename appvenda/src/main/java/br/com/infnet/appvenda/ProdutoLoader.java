@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -88,8 +90,8 @@ public class ProdutoLoader implements ApplicationRunner {
 			    Collection<Produto> produtos = produtoService.obterLista();			    
 			    produtos.forEach(produto -> System.out.println("[Produto] " + produto));
 				
-			} catch (IOException e) {
-			    e.printStackTrace();
+			} catch (ConstraintViolationException e) {
+				FileLogger.logException("[PRODUTO] - " + e.getMessage());
 			}
 	}
 

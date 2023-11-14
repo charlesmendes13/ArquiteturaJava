@@ -8,10 +8,10 @@ import javax.validation.constraints.Size;
 @Table(name="TRoupa")
 public class Roupa extends Produto{
 
-	@Size(min = 2, max = 100, message = "A marca deve ter entre {min} e {max} caracteres.")
+	@Size(min = 1, max = 100, message = "A marca deve ter entre {min} e {max} caracteres.")
 	private String marca;
 	
-	@Size(min = 2, max = 100, message = "A cor deve ter entre {min} e {max} caracteres.")
+	@Size(min = 1, max = 100, message = "A cor deve ter entre {min} e {max} caracteres.")
 	private String cor;
 	
 	@Size(min = 1, max = 100, message = "O tamanho deve ter entre {min} e {max} caracteres.")
