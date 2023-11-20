@@ -17,7 +17,7 @@ import br.com.infnet.appvenda.model.domain.Roupa;
 import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.RoupaService;
 
-@Order(3)
+@Order(4)
 @Component
 public class RoupaLoader implements ApplicationRunner {
 

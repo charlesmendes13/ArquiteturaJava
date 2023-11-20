@@ -20,7 +20,7 @@ import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.ProdutoService;
 import br.com.infnet.appvenda.model.service.VendedorService;
 
-@Order(4)
+@Order(2)
 @Component
 public class ProdutoLoader implements ApplicationRunner {
 

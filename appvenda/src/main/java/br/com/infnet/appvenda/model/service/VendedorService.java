@@ -19,6 +19,10 @@ public class VendedorService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
+	public Vendedor pesquisar(String cpf) {
+		return vendedorRepository.findByCpf(cpf);
+	}
+	
 	public void incluir(Vendedor vendedor) {
 		Endereco endereco = enderecoClient.buscarCep(vendedor.getEndereco().getCep());
 		

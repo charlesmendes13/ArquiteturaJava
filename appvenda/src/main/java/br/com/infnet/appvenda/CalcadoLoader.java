@@ -17,7 +17,7 @@ import br.com.infnet.appvenda.model.domain.Calcado;
 import br.com.infnet.appvenda.model.domain.Vendedor;
 import br.com.infnet.appvenda.model.service.CalcadoService;
 
-@Order(2)
+@Order(3)
 @Component
 public class CalcadoLoader implements ApplicationRunner {
 
